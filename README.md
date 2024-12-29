@@ -8,8 +8,4 @@
 
 ### 참고
 
-Prediction and multi-objective optimization of mechanical, economical,
-and environmental properties for strain-hardening cementitious composites
-(SHCC) based on automated machine learning and
-metaheuristic algorithms
-Soroush Mahjoubi, Rojyar Barhemat, Pengwei Guo, Weina Meng, Yi Bao
+Prediction and multi-objective optimization of mechanical, economical, and environmental properties for strain-hardening cementitious composites (SHCC) based on automated machine learning and metaheuristic algorithms. Yi Bao et al. Journal of Cleaner Production 329 (2021)
