@@ -47,16 +47,24 @@
 ### 상관행렬 및 히트맵
 
 - **설명**: 데이터 클렌징 이전에 확인한 상관행렬에서, 우측 하단 feature들 간 높은 상관성을 확인할 수 있습니다.
-- **시각화**:  
-  ![Heatmap](./img/heatmap.png)
+- **시각화**:
+  <details>
+    <summary>Show Heatmap</summary>
+    
+    ![Heatmap](./img/heatmap.png)
+  </details>
 
 ---
 
 ### Pair KDE Plot (Before Cleansing)
 
 - **설명**: 우측 하단 feature들의 밀도 플롯을 확인합니다.
-- **시각화**:  
-  ![Pair KDE Before](./img/pair_kde_plot_before_clean.png)
+- **시각화**:
+  <details>
+    <summary>Show Pair KDE Plot (Before)</summary>
+    
+    ![Pair KDE Before](./img/pair_kde_plot_before_clean.png)
+  </details>
 
 > **참고**: 좌측 상단 feature들은 상관관계가 명확하지만, 우측 하단 feature들은 이상치로 인한 높은 상관성이 있음이 의심됩니다.
 
@@ -65,8 +73,12 @@
 ### Pair KDE Plot (After Outlier Removal)
 
 - **설명**: 이상치를 제거한 후, `EX1.MD-TQ`는 단일 값을 가지며 분산이 0임을 확인하였습니다.
-- **시각화**:  
-  ![Pair KDE After](./img/pair_kde_plot.png)
+- **시각화**:
+  <details>
+    <summary>Show Pair KDE Plot (After)</summary>
+    
+    ![Pair KDE After](./img/pair_kde_plot.png)
+  </details>
 
 - **결론**: 통제 가능한 변수와 변형 가능한 변수들을 성공적으로 구분하였습니다.
   - **통제할 변수**: `EX1.H4_PV`, `EX1.H2O_PV`, `EX1.MELT_P_PV`
@@ -86,10 +98,18 @@
 ### 주요 시각화
 
 - **혼동행렬 (Confusion Matrix)**
-  ![Confusion Matrix](./img/confusion_matrix.png)
+  <details>
+    <summary>Show Confusion Matrix</summary>
+    
+    ![Confusion Matrix](./img/confusion_matrix.png)
+  </details>
 
 - **ROC Curve**
-  ![ROC Curve](./img/roc_curve.png)
+  <details>
+    <summary>Show ROC Curve</summary>
+    
+    ![ROC Curve](./img/roc_curve.png)
+  </details>
 
 ---
 
@@ -139,14 +159,22 @@ AutoGluon을 통해 각 변수의 중요도와 통계 지표를 아래 표로 �
 ### 노이즈 적용 프로세스
 
 #### 기존 데이터 분포
-![Raw Distribution](./img/raw_dist.png)
+<details>
+  <summary><strong>Show Raw Distribution</strong></summary>
+  
+  ![Raw Distribution](./img/raw_dist.png)
+</details>
 
 기존 데이터는 특정 분포를 따른다고 보기 어렵습니다.  
 따라서, 가우시안 노이즈와 KDE 노이즈를 각각 적용한 분포를 확인하였습니다.
 
-- **시각화**:  
-  ![Gaussian Noise](./img/Gaussian_noise.png)  
-  ![KDE Noise](./img/KDE_noise.png)
+- **시각화**:
+  <details>
+    <summary>Show Noise Visualizations</summary>
+    
+    ![Gaussian Noise](./img/Gaussian_noise.png)  
+    ![KDE Noise](./img/KDE_noise.png)
+  </details>
 
 > **선택 이유**: 해당 데이터에서는 KDE 노이즈가 더욱 자연스러운 결과를 제공하여 이를 채택하였습니다.
 
