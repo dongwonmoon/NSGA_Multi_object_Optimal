@@ -41,7 +41,6 @@
 ![alt text](./img/roc_curve.png)
 다양한 모델에서 비슷한 성능을 낼 수 있는 것으로 보아, 데이터 자체는 상당히 깔끔하고 분류하기 쉬움.
 
-<div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -232,7 +231,6 @@
     </tr>
   </tbody>
 </table>
-</div>
 
 </div>
 </details>
