@@ -49,7 +49,7 @@
 
 - **설명**: 데이터 클렌징 전 상관행렬을 확인하며, 우측 하단 feature들 간 높은 상관성을 확인할 수 있습니다.
 - **시각화**:
-  - [헬핏맵 보기](./img/heatmap.png)
+  - ![Before Cleansing Heatmap](./img/heatmap.png)
 
 ---
 
@@ -57,7 +57,7 @@
 
 - **설명**: 우측 하단 feature들의 밀도 플롯 확인.
 - **시각화**:
-  - [Before Cleansing Plot 보기](./img/pair_kde_plot_before_clean.png)
+  - ![Before Cleansing Plot](./img/pair_kde_plot_before_clean.png)
 
 > **참고**: 좌측 상단 feature들은 상관관계가 명확한 반면, 우측 하단 feature들은 이상치 영향이 의심됩니다.
 
@@ -67,7 +67,7 @@
 
 - **설명**: 이상치 제거 후 데이터의 변화를 확인합니다. (예: `EX1.MD-TQ`는 단일 값을 가지며 분산이 0임)
 - **시각화**:
-  - [After Outlier Removal Plot 보기](./img/pair_kde_plot.png)
+  - ![After Outlier Removal Plot](./img/pair_kde_plot.png)
 
 - **결론**: 통제 가능한 변수와 변형 가능한 변수를 명확히 구분할 수 있었습니다.
   - **통제할 변수**: `EX1.H4_PV`, `EX1.H2O_PV`, `EX1.MELT_P_PV`
@@ -86,10 +86,10 @@
 ### 주요 시각화
 
 - **혼동행렬 (Confusion Matrix)**
-  - [혼동행렬 보기](./img/confusion_matrix.png)
+  - ![혼동행렬](./img/confusion_matrix.png)
 
 - **ROC Curve**
-  - [ROC Curve 보기](./img/roc_curve.png)
+  - ![ROC Curve](./img/roc_curve.png)
 
 ---
 
@@ -148,8 +148,8 @@ AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 아래 표에�
 
 - 기존 데이터는 특정 분포를 따르지 않으므로, 가우시안 노이즈와 KDE 노이즈를 각각 적용 후 비교.
 - **시각화**:
-  - [Gaussian Noise](./img/Gaussian_noise.png)
-  - [KDE Noise](./img/KDE_noise.png)
+  - ![Gaussian Noise](./img/Gaussian_noise.png)
+  - ![KDE Noise](./img/KDE_noise.png)
 
 > **선택 이유**: 자연스러운 결과를 제공하는 KDE 노이즈를 채택하였습니다.
 
