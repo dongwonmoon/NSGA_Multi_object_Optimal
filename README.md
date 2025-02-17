@@ -1,19 +1,27 @@
+<!--
+  Enhanced README for NSGA 다목적 최적화 프로젝트
+  This file provides a comprehensive and beautifully styled introduction to the project,
+  including project overview, table of contents, detailed sections and visual guides.
+-->
+
 # 🚀 NSGA 다목적 최적화 프로젝트
 
 [![Dataset](https://img.shields.io/badge/Dataset-KAMP%20AI-lightgrey)](https://www.kamp-ai.kr/aidataDetail?AI_SEARCH=&page=4&DATASET_SEQ=49&EQUIP_SEL=&GUBUN_SEL=&FILE_TYPE_SEL=&WDATE_SEL=)
+[![AutoGluon](https://img.shields.io/badge/AutoML-AutoGluon-brightgreen)](https://auto.gluon.ai/)
 
 ---
 
-## 📚 목차
+## 목차
 
 - [🚀 NSGA 다목적 최적화 프로젝트](#-nsga-다목적-최적화-프로젝트)
-  - [📚 목차](#-목차)
+  - [목차](#목차)
   - [✨ 프로젝트 개요](#-프로젝트-개요)
   - [🎯 문제 정의](#-문제-정의)
   - [🔍 탐색적 데이터 분석 (EDA)](#-탐색적-데이터-분석-eda)
     - [상관행렬 및 히트맵](#상관행렬-및-히트맵)
-    - [Pair KDE Plot (Before Cleansing)](#pair-kde-plot-before-cleansing)
-    - [Pair KDE Plot (After Outlier Removal)](#pair-kde-plot-after-outlier-removal)
+    - [Pair KDE Plot](#pair-kde-plot)
+      - [Before Cleansing](#before-cleansing)
+      - [After Outlier Removal](#after-outlier-removal)
   - [🧠 모델 훈련](#-모델-훈련)
     - [주요 시각화](#주요-시각화)
     - [Feature Importance Table](#feature-importance-table)
@@ -22,6 +30,7 @@
       - [기존 데이터 분포](#기존-데이터-분포)
       - [프로세스 단계](#프로세스-단계)
   - [Pareto Front Plot](#pareto-front-plot)
+  - [기존 상한과 하한의 비교](#기존-상한과-하한의-비교)
   - [🔗 참고자료](#-참고자료)
 
 ---
@@ -29,7 +38,8 @@
 ## ✨ 프로젝트 개요
 
 이 프로젝트는 **소성가공 공정의 품질 불량 문제** 해결을 위한 다목적 최적화 프로젝트입니다.  
-제공된 데이터셋을 기반으로 결함 판정, 주요 변수 식별, 및 변수 변형 시뮬레이션을 통해 **공정 난이도, 제품 품질, 가격**을 동시에 최적화하는 것을 목표로 합니다.
+제공된 데이터를 기반으로 **결함 판정**, **주요 변수 식별** 및 **변수 변형 시뮬레이션**을 통해,
+**공정 난이도, 제품 품질, 가격**을 동시에 최적화하는 것을 목표로 합니다.
 
 ---
 
@@ -43,34 +53,38 @@
 ## 🔍 탐색적 데이터 분석 (EDA)
 
 <details>
-  <summary><strong>1. EDA 상세 분석</strong></summary>
+  <summary><strong>1. EDA 상세 분석 보기</strong></summary>
 
 ### 상관행렬 및 히트맵
 
 - **설명**: 데이터 클렌징 전 상관행렬을 확인하며, 우측 하단 feature들 간 높은 상관성을 확인할 수 있습니다.
-- **시각화**:
-  - ![Before Cleansing Heatmap](./img/heatmap.png)
+- **시각화**:  
+  ![Before Cleansing Heatmap](./img/heatmap.png)
 
 ---
 
-### Pair KDE Plot (Before Cleansing)
+### Pair KDE Plot
 
-- **설명**: 우측 하단 feature들의 밀도 플롯 확인.
-- **시각화**:
-  - ![Before Cleansing Plot](./img/pair_kde_plot_before_clean.png)
+#### Before Cleansing
 
-> **참고**: 좌측 상단 feature들은 상관관계가 명확한 반면, 우측 하단 feature들은 이상치 영향이 의심됩니다.
+- **설명**: 우측 하단 feature들의 밀도 플롯을 통해 데이터 분포를 확인합니다.
+- **시각화**:  
+  ![Before Cleansing Plot](./img/pair_kde_plot_before_clean.png)
+
+> 좌측 상단 feature들은 상관관계가 명확한 반면, 우측 하단 feature들은 이상치의 영향을 받을 수 있습니다.
 
 ---
 
-### Pair KDE Plot (After Outlier Removal)
+#### After Outlier Removal
 
-- **설명**: 이상치 제거 후 데이터의 변화를 확인합니다. (예: `EX1.MD-TQ`는 단일 값을 가지며 분산이 0임)
-- **시각화**:
-  - ![After Outlier Removal Plot](./img/pair_kde_plot.png)
+- **설명**: 이상치 제거 후 데이터 변화 관찰 (예: `EX1.MD-TQ`는 단일 값을 가지며 분산이 0임).
+- **시각화**:  
+  ![After Outlier Removal Plot](./img/pair_kde_plot.png)
 
-- **결론**: 통제 가능한 변수와 변형 가능한 변수를 명확히 구분할 수 있었습니다.
+- **결론**:  
+  통제 가능한 변수와 변형 가능한 변수를 명확히 구분할 수 있었습니다.
   - **통제할 변수**: `EX1.H4_PV`, `EX1.H2O_PV`, `EX1.MELT_P_PV`
+  
 </details>
 
 ---
@@ -78,10 +92,7 @@
 ## 🧠 모델 훈련
 
 <details>
-  <summary><strong>2. 모델 훈련 상세</strong></summary>
-
-모델 훈련은 **AutoGluon**의 AutoML 모듈을 사용했습니다.  
-모델 평가 지표는 아래와 같습니다.
+  <summary><strong>2. 모델 훈련 상세 정보 보기</strong></summary>
 
 ### 주요 시각화
 
@@ -95,7 +106,7 @@
 
 ### Feature Importance Table
 
-AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 아래 표에서 확인할 수 있습니다:
+AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 확인할 수 있습니다:
 
 | Feature           | Importance  | Std Dev   | P-Value  | n  | P99 High  | P99 Low   |
 |-------------------|-------------|-----------|----------|----|-----------|-----------|
@@ -124,7 +135,7 @@ AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 아래 표에�
 
 ## 🎮 시뮬레이션 설정
 
-시뮬레이션 단계에서는 선정된 변수를 바탕으로 전체 시스템 모델링 및 최적화 시뮬레이션을 수행합니다.
+시뮬레이션 단계에서는 선정된 변수를 기반으로 전체 시스템 모델링 및 최적화 시뮬레이션을 진행합니다.
 
 - **시뮬레이션 제외 변수**:  
   - `EX1.H4_PV`, `EX1.H2O_PV`, `EX1.MELT_P_PV`  
@@ -140,34 +151,89 @@ AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 아래 표에�
 ### 노이즈 적용 프로세스
 
 #### 기존 데이터 분포
+
 <details>
   <summary><strong>Raw Distribution 보기</strong></summary>
   
   ![Raw Distribution](./img/raw_dist.png)
 </details>
 
-- 기존 데이터는 특정 분포를 따르지 않으므로, 가우시안 노이즈와 KDE 노이즈를 각각 적용 후 비교.
+- 기존 데이터는 특정 분포를 따르지 않습니다.  
+  
+**노이즈 적용 전략:**
+- **Gaussian 노이즈**와 **KDE 노이즈**를 각각 적용해 결과를 비교.
 - **시각화**:
   - ![Gaussian Noise](./img/Gaussian_noise.png)
   - ![KDE Noise](./img/KDE_noise.png)
 
-> **선택 이유**: 자연스러운 결과를 제공하는 KDE 노이즈를 채택하였습니다.
+> **선택 이유**: 자연스러운 결과를 제공하는 KDE 노이즈 방식 채택.
 
 #### 프로세스 단계
 
 1. **Shift 적용**: Train 데이터의 최소/최대값을 기준으로 새로운 구간 설정.
 2. **정규화**: 설정된 구간 내에서 데이터 정규화 수행.
-3. **로짓 변환**: 정규화된 데이터에 대해 `log(x_norm/(1-x_norm))` 로짓 변환 수행.
+3. **로짓 변환**: 정규화된 데이터에 대해 `log(x_norm/(1-x_norm))` 로짓 변환.
 4. **KDE 샘플링**: KDE 알고리즘을 통해 데이터를 샘플링.
 5. **역 로짓 변환**: 노이즈가 추가된 최종 데이터 생성.
 
-이를 통해 보다 자연스러운 노이즈가 적용된 데이터를 생성할 수 있습니다.
+이를 통해 보다 자연스러운 노이즈가 적용된 데이터를 생성합니다.
 
 ---
 
 ## Pareto Front Plot
 
 ![Pareto Front](./img/pareto.png)
+
+---
+
+## 기존 상한과 하한의 비교
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>기존 상한 / 하한</th>
+      <th>새 상한 / 하한</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EX1.A1_PV</td>
+      <td>상한: 241.0000<br>하한: 239.0000</td>
+      <td>상한: 241.593023<br>하한: 240.530244</td>
+    </tr>
+    <tr>
+      <td>EX1.A2_PV</td>
+      <td>상한: 242.0000<br>하한: 237.0000</td>
+      <td>상한: 243.482557<br>하한: 237.827666</td>
+    </tr>
+    <tr>
+      <td>EX1.H1_PV</td>
+      <td>상한: 242.0000<br>하한: 237.0000</td>
+      <td>상한: 237.827666<br>하한: 237.280179</td>
+    </tr>
+    <tr>
+      <td>EX1.MD_PV</td>
+      <td>상한: 75.6126<br>하한: 0.0000</td>
+      <td>상한: 99.663990<br>하한: 4.237015</td>
+    </tr>
+    <tr>
+      <td>EX1.Z1_PV</td>
+      <td>상한: 218.0000<br>하한: 201.0000</td>
+      <td>상한: 223.407480<br>하한: 198.538294</td>
+    </tr>
+    <tr>
+      <td>EX1.Z2_PV</td>
+      <td>상한: 221.0000<br>하한: 217.0000</td>
+      <td>상한: 222.918089<br>하한: 216.420775</td>
+    </tr>
+    <tr>
+      <td>EX1.Z4_PV</td>
+      <td>상한: 242.0000<br>하한: 237.0000</td>
+      <td>상한: 244.397611<br>하한: 234.912099</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -178,4 +244,4 @@ AutoGluon을 통해 각 변수의 중요도 및 통계 지표를 아래 표에�
 
 ---
 
-✨ Contributions 및 개선 아이디어 환영합니다!  
+✨ Contributions와 개선 아이디어를 언제든지 환영합니다!
