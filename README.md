@@ -9,6 +9,14 @@
 [![Dataset](https://img.shields.io/badge/Dataset-KAMP%20AI-lightgrey)](https://www.kamp-ai.kr/aidataDetail?AI_SEARCH=&page=4&DATASET_SEQ=49&EQUIP_SEL=&GUBUN_SEL=&FILE_TYPE_SEL=&WDATE_SEL=)
 [![AutoGluon](https://img.shields.io/badge/AutoML-AutoGluon-brightgreen)](https://auto.gluon.ai/)
 
+# :TODO:
+1. 데이터 불균형 => 모델의 정확도가 매우 높지만, 데이터 불균형에 의해 편향되었을 가능 多 (적절한 데이터 확보, 전처리 등으로 해결 가능 ?)
+2. 더 적절한 노이즈 모델 => 공분산을 이용한 노이즈 ? 정형 데이터 Gen model (굉장히 복잡해질 수도)? (자료 조사 제일 많이 필요한 구간)
+3. 파레토 최적해 집합에 대한 충분한 공부, 트레이드 오프의 해석
+4. 목적함수 재 정의 => 각 변수 별 따로 ? 스케일링 한 변수 상하한 합 ?
+5. 증거 불충분 => 변수 상하한이 어떻게 수렴하는 지에 대한 증거, 노이즈를 줄 변수 선택의 증거 (현재는 상관성에 기반하지만,,,,), etc (깊게 생각해보기)
+6. 노이즈를 주입한 데이터에 대한 모델의 예측 결과의 신뢰성 확보 => XAI, 불확실성 정량화, 분포 외 데이터(OOD), 민감도 분석, Conformal Prediction ?
+
 ---
 
 ## 목차
